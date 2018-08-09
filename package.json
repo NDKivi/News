@@ -1,0 +1,26 @@
+{
+  "name": "news",
+  "version": "1.0.0",
+  "description": "UMN Coding Boot Camp News Homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NDKivi/News.git"
+  },
+  "author": "Neal Kivi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NDKivi/News/issues"
+  },
+  "homepage": "https://github.com/NDKivi/News#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.7",
+    "request": "^2.87.0"
+  }
+}
