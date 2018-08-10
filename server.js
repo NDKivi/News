@@ -84,7 +84,7 @@ app.get("/scrape/issue", function (req, res) {
 });
 
 app.get("/api/articles", function (req, res) {
-    db.Article.find().populate("Note").then(function (docs) {
+    db.Article.find().populate("notes").then(function (docs) {
         res.json(docs);
     });
 });
@@ -103,7 +103,7 @@ app.post("/api/notes", function (req, res) {
             if (doc) {
                 db.Note.create({ "body": body, "user": user }).then(function (dbNote) {
                     db.Article.findOneAndUpdate({ _id: doc._id }, { $push: { notes: dbNote._id } }, function(error, document) {
-                        
+                        res.json(dbNote);
                         console.log(dbNote);
                         console.log(document);
                     });
@@ -113,8 +113,6 @@ app.post("/api/notes", function (req, res) {
             }
         });
     }
-    // db.Note.create({})
-    res.json();
 });
 
 app.listen(PORT, function () {
