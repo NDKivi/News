@@ -29,13 +29,11 @@ app.get("/scrape/oo", function (req, res) {
                 console.log("Missing something");
             } else {
                 db.Article.findOne({ "link": link }, function (err, doc) {
-                    // console.log(docs);
                     if (err)
                         console.log(err);
                     if (doc) {
                         console.log("article already exists");
                     } else {
-                        console.log("docs:" + doc);
                         db.Article.create(newArticle).then(function (dbArticle) {
                             // console.log(dbArticle);
                         }).catch(function (error) {
@@ -94,18 +92,12 @@ app.post("/api/notes", function (req, res) {
     let body = req.body.body;
     let user = req.body.user;
 
-    console.log("body: " + body);
-    console.log("user: " + user);
-    console.log("associatedArticleId: " + associatedArticleId);
-
     if (body && user && associatedArticleId) {
         db.Article.findOne({ _id: associatedArticleId }, function (err, doc) {
             if (doc) {
                 db.Note.create({ "body": body, "user": user }).then(function (dbNote) {
                     db.Article.findOneAndUpdate({ _id: doc._id }, { $push: { notes: dbNote._id } }, function(error, document) {
                         res.json(dbNote);
-                        console.log(dbNote);
-                        console.log(document);
                     });
                 });
             } else {
@@ -113,6 +105,10 @@ app.post("/api/notes", function (req, res) {
             }
         });
     }
+});
+
+app.get("*", function(req, res) {
+    res.redirect("/index.html");
 });
 
 app.listen(PORT, function () {

@@ -15,7 +15,7 @@ $(document).ready(function() {
                         <input type='text' id='user'>
                         <label for='body'>Comment:</label>
                         <textarea rows='4' cols='50' id='body'></textarea>
-                        <button class='add-comment' data-article='${data[i]._id}'>Comment</button>
+                        <button class='add-comment' data-article='${data[i]._id}'>Add</button>
                         <h3>Comments:</h3>
                         <section>
                         `;
@@ -36,10 +36,6 @@ $(document).ready(function() {
             let user = myButton.siblings("#user").val();
             let article = myButton.data("article");
 
-            console.log("body", body);
-            console.log("user", user);
-            console.log("articleID", article);
-
             let requestBody = {
                 "body": body,
                 "user": user,
@@ -47,7 +43,6 @@ $(document).ready(function() {
             };
 
             $.post("/api/notes", requestBody, function(data) {
-                console.log(data);
                 myButton.siblings("section").prepend(`<h5>${user}</h5>
                                         <p>${body}</p>`);
                 
