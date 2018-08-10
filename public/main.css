@@ -1,0 +1,40 @@
+h1 {
+    color: cadetblue;
+    margin-bottom: 0.2rem;
+    font-size: 1.5rem;
+}
+
+header h1 {
+    color: black;
+    text-align: center;
+    font-size: 2rem;
+}
+
+a {
+    color: palevioletred
+}
+
+main {
+    margin: auto;
+    width: 80%;
+    max-width: 1024px;
+}
+.notes label {
+    display:  block;
+}
+
+h5 {
+    margin-bottom: 0;
+}
+
+p {
+    margin-top: 0.3rem;
+}
+
+section {
+    background:  #eeeeee;
+    min-height: 4rem;
+    padding-left: 1rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.1rem;
+}

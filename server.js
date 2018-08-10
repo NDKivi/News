@@ -50,7 +50,7 @@ app.get("/scrape/oo", function (req, res) {
 });
 
 app.get("/scrape/issue", function (req, res) {
-    request("https://nplusonemag.com/magazine/issue-30/", function (requestError, requestResponse, requestBody) {
+    request("https://nplusonemag.com/magazine/issue-31/", function (requestError, requestResponse, requestBody) {
         let $ = cheerio.load(requestBody);
         $("article.post").each(function (i, element) {
             let link = $(this).children("h1.post-title").children("a").attr("href");
