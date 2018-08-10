@@ -4,14 +4,14 @@ const mongoose = require("mongoose");
 const request = require("request");
 const cheerio = require("cheerio");
 const db = require("./models");
-const PORT = 3000;
-
+const PORT = process.env.PORT || 3000
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/News";
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/News");
+mongoose.connect(MONGODB_URI);
 
 app.get("/scrape/oo", function (req, res) {
     request("https://nplusonemag.com/online-only/", function (requestError, requestResponse, requestBody) {
